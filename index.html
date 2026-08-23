@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050505;color:#888;font-family:-apple-system,BlinkMacSystemFont,sans-serif;min-height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:20px}
+.container{text-align:center;max-width:480px}
+.spinner{width:32px;height:32px;border:2px solid rgba(255,255,255,.1);border-top-color:#ff3333;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status{font-size:11px;letter-spacing:3px;opacity:.5;text-transform:uppercase;margin-bottom:8px}
+.info{font-size:12px;opacity:.3;margin-top:30px;line-height:1.6}
+.manual-btn{margin-top:24px;padding:14px 28px;background:#ff3333;color:white;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 20px rgba(255,51,51,.3)}
+.hint{margin-top:12px;font-size:11px;opacity:.4}
+pre{text-align:left;white-space:pre-wrap;font-size:11px;opacity:.25;max-height:200px;overflow:auto;margin-top:20px}
+</style></head><body>
+<div class="container">
+<div class="spinner"></div>
+<div class="status">Preparing Report</div>
+<button class="manual-btn" id="mb">OPEN EMAIL MANUALLY</button>
+<div class="hint">If email didn't open, tap above</div>
+<pre>FORMAL LEGAL COMPLAINT
+
+The conduct described herein violates multiple provisions of platform policy and criminal statutes:
+
+
+Multiple independent sources confirm that @mox engages in systematic abuse of the platform. The specific violation: Scam
+
+Community members have repeatedly flagged @mox. Core violation on record: Scam No enforcement action has followed despite multiple prior submissions.
+
+Verification data:
+[2026-08-23] @mox confirmed live
+(see channel) confirms violating content
+Classification: Scam
+
+This matter is being tracked by legal counsel. Prompt compliance is expected.</pre>
+</div>
+<script>
+var TO="abuse@telegram.org";
+var SUBJECT="Abuse Report: Scam";
+var BODY="FORMAL LEGAL COMPLAINT\n\nThe conduct described herein violates multiple provisions of platform policy and criminal statutes:\n\n\nMultiple independent sources confirm that @mox engages in systematic abuse of the platform. The specific violation: Scam\n\nCommunity members have repeatedly flagged @mox. Core violation on record: Scam No enforcement action has followed despite multiple prior submissions.\n\nVerification data:\n[2026-08-23] @mox confirmed live\n(see channel) confirms violating content\nClassification: Scam\n\nThis matter is being tracked by legal counsel. Prompt compliance is expected.";
+function enc(s){return encodeURIComponent(s)}
+function go(){location.href='mailto:'+TO+'?subject='+enc(SUBJECT)+'&body='+enc(BODY.substring(0,1800))}
+document.getElementById('mb').onclick=go;
+setTimeout(go,800);
+</script></body></html>
